@@ -14,4 +14,4 @@ The name of our game is IU Detective which somewhat demonstrates the main purpos
 - The game is a 2D pixel game and its environment will mimic the actual infrastructure of IU. Therefore, this game will allow us to visit the campus virtually while we enjoy playing it. Especially, due to the Covid-19, many subjects have to be conducted online for the students and they may not have a chance to go to the campus frequently. This game will be a fine solution for this situation.
 
 ## 3. References & Materials
-
+ong Khoa paste link video voi hinh anh vao phan nay
