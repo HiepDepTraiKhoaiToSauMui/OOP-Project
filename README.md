@@ -12,7 +12,17 @@ The name of our game is IU Detective which somewhat demonstrates the main purpos
 ### b. Brief description
 - In this game, the player will control the main character – a student detective to find out who is truly the thief of a stolen backpack case with some hints, evidences as well as guides to solve some riddles provided by the game. Moreover, the player has to collect useful tools on the way or to interact with other characters like students and lecturers or objects like opening/close the door, turning on/off something and extract information by reading some letters or description about something.
 - The game is a 2D pixel game and its environment will mimic the actual infrastructure of IU. Therefore, this game will allow us to visit the campus virtually while we enjoy playing it. Especially, due to the Covid-19, many subjects have to be conducted online for the students and they may not have a chance to go to the campus frequently. This game will be a fine solution for this situation.
-
+### c. Feature
+#### 1. Primary feature
+- Interact: The players can interact items to find clues.
+- Move: The players can move any directions they can.
+- Items: IT can be a clue, introduction of place.
+- Notification: It can be a notice items, alarm, when you finish or accept any missions.
+- NPC: Other students or teachers.
+#### 2. Secondary fearture
+- Map: Show the location where we are standing.
+- Time: Real time or time in game.
+- Change characters: The appearances can be change.
 ## 3. References & Materials
 ### a. Language: Java
 ### b. Library: Standard GUI (AWT and SWING)
