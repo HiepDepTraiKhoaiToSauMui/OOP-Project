@@ -14,4 +14,15 @@ The name of our game is IU Detective which somewhat demonstrates the main purpos
 - The game is a 2D pixel game and its environment will mimic the actual infrastructure of IU. Therefore, this game will allow us to visit the campus virtually while we enjoy playing it. Especially, due to the Covid-19, many subjects have to be conducted online for the students and they may not have a chance to go to the campus frequently. This game will be a fine solution for this situation.
 
 ## 3. References & Materials
-ok ljuon nha
+### a. Language: Java
+### b. Library: Standard GUI (AWT and SWING)
+### c. What would our game looks like:
+![image](https://user-images.githubusercontent.com/86940283/163815875-0b90166e-bbaa-4da0-a36d-0cf9a77a5695.png)
+![image](https://user-images.githubusercontent.com/86940283/163815891-e7502b6a-3810-4c30-8bb4-f63012bccd7c.png)
+![image](https://user-images.githubusercontent.com/86940283/163815904-4e08bdb9-9ba0-4ce2-a523-a3167663424c.png)
+![image](https://user-images.githubusercontent.com/86940283/163815914-d19d14d7-1bca-4d04-8e10-d3e7e2e7edb6.png)
+### d. Refference: 
+#### Tom Huynh's Lession
+#### Youtube Channel: RyiSnow (https://www.youtube.com/channel/UCS94AD0gxLakurK-6jnqV1w)
+#### List of video used: https://www.youtube.com/watch?v=om59cwR7psI&list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq&ab_channel=RyiSnow
+
