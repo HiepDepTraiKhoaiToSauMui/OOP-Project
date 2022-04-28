@@ -2,7 +2,7 @@
 # IU DETECTIVE
 ## 1. Team Đổ 5 Nghìn Nó Không Cho Đổ
 Contributors
-- Lê Đào Thành Vinh - ITITIU20353 leader
+- Lê Đào Thành Vinh - ITITIU20353 lead
 - Hồ Hữu Hiệp - ITITIU20202
 - Lê Duy Dương - ITITUN20004
 - Võ Thành Khoa - ITITSB20002
