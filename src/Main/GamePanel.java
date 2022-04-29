@@ -1,6 +1,7 @@
 package Main;
 
 import Entity.Player;
+import Tiles.TilesManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,18 +12,27 @@ public class GamePanel extends JPanel implements Runnable{
     final int scale = 3;
 
     public final int tileSize = originalTileSize* scale;
-    final int maxScreenCol =16;
-    final int maxScreenRow=12;
+    public final int maxScreenCol =16;
+    public final int maxScreenRow=12;
 
-    final int screenWidth = tileSize * maxScreenCol; //768
-    final int screenHeight= tileSize * maxScreenRow; //576
+    public final int screenWidth = tileSize * maxScreenCol; //768
+    public final int screenHeight= tileSize * maxScreenRow; //576
+
+    //World SETTINGS
+    public final int maxWorldCol=32;
+    public final int maxWorldRow=33;
+
+    public final int worldWidth=tileSize*maxWorldCol;
+    public final int worldHeight=tileSize*maxWorldRow;
 
     KeyHandler keyHandler = new KeyHandler();
     Thread gameThread;
 
-    int FPS = 60;
 
-    Player player = new Player(this,keyHandler);
+
+    int FPS = 60;
+    TilesManager tilesM = new TilesManager(this);
+    public Player player = new Player(this,keyHandler);
 
     //initial position
     int playerX = 100;
@@ -73,8 +83,15 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D)g;
-
+        tilesM.draw(g2);
         player.draw(g2);
+        if(keyHandler.showDebugText==true){
+            g2.setFont(new Font("Arial",Font.PLAIN, 20));
+            g2.setColor(Color.white);
+            int x= 10; int y=400;
+            int lineHeight= 20;
+
+        }
         g2.dispose();
     }
 }

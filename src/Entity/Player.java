@@ -11,31 +11,35 @@ import java.io.IOException;
 public class Player extends Entity{
     GamePanel gp;
     KeyHandler keyHandler;
+    public final int screenX;
+    public final int screenY;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp=gp;
         this.keyHandler=keyH;
+        screenX=gp.screenWidth/2-(gp.tileSize/2);
+        screenY=gp.screenHeight/2-(gp.tileSize/2);
         setDefaultValues();
         getPlayerImage();
         direction = "down";
     }
 
     public void setDefaultValues() {
-        x= 100;
-        y=100;
+        worldX= 3* gp.tileSize;
+        worldY=29* gp.tileSize;
         speed =4;
     }
     public void getPlayerImage() {
 
         try {
-            up1 = ImageIO.read(getClass().getResourceAsStream("/bear_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/bear_up_2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/bear_down_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/bear_down_2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/bear_right_1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/bear_right_2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/bear_left_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/bear_left_2.png"));
+            up1 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_up_1.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_up_2.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_down_1.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_down_2.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_right_1.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_right_2.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_left_1.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_left_2.png"));
         } catch(IOException e) {
             e.printStackTrace();
         }
@@ -44,26 +48,26 @@ public class Player extends Entity{
     public void update() {
         if (keyHandler.upPressed==true || keyHandler.downPressed==true
                 || keyHandler.leftPressed == true || keyHandler.rightPressed==true) {
-
-            if (keyHandler.upPressed == true) {
-                direction = "up";
-                y -= speed;
+            if(keyHandler.upPressed == true) {
+                direction="up";
+                worldY-=speed;
             }
 
-            if (keyHandler.downPressed == true) {
-                direction = "down";
-                y += speed;
+            if(keyHandler.downPressed == true) {
+                direction="down";
+                worldY+=speed;
             }
 
-            if (keyHandler.rightPressed == true) {
-                direction = "right";
-                x += speed;
+            if(keyHandler.rightPressed == true) {
+                direction="right";
+                worldX+=speed;
             }
 
-            if (keyHandler.leftPressed == true) {
-                direction = "left";
-                x -= speed;
+            if(keyHandler.leftPressed == true) {
+                direction="left";
+                worldX-=speed;
             }
+
 
             spriteCounter++;
             if (spriteCounter > 10) {
@@ -76,7 +80,6 @@ public class Player extends Entity{
             }
         }
     }
-
     public void draw(Graphics2D g2) {
         BufferedImage image = null;
         switch(direction) {
@@ -115,6 +118,25 @@ public class Player extends Entity{
                 }
                 break;
         }
+        int x=screenX;
+        int y=screenY;
+        if(screenX>worldX){
+            x= worldX;
+        }
+        if(screenY>worldY){
+            y=worldY;
+        }
+        int rightOffset=gp.screenWidth-screenX;
+        if(rightOffset>gp.worldWidth-worldX){
+            x= gp.screenWidth-(gp.worldWidth-worldX);
+        }
+        int bottomOffset=gp.screenHeight-screenY;
+        if(bottomOffset>gp.worldHeight-worldY) {
+            y = gp.screenHeight - (gp.worldWidth - worldY);
+        }
         g2.drawImage(image,x,y,gp.tileSize, gp.tileSize,null,null);
     }
 }
+
+    
+
