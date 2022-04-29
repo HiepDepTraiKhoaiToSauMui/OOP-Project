@@ -19,9 +19,12 @@ public class Player extends Entity{
         this.keyHandler=keyH;
         screenX=gp.screenWidth/2-(gp.tileSize/2);
         screenY=gp.screenHeight/2-(gp.tileSize/2);
+        direction = "down";
+
+        solidArea = new Rectangle(8,16,32,32);
+
         setDefaultValues();
         getPlayerImage();
-        direction = "down";
     }
 
     public void setDefaultValues() {
@@ -30,7 +33,6 @@ public class Player extends Entity{
         speed =4;
     }
     public void getPlayerImage() {
-
         try {
             up1 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_up_1.png"));
             up2 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_up_2.png"));
@@ -48,29 +50,43 @@ public class Player extends Entity{
     public void update() {
         if (keyHandler.upPressed==true || keyHandler.downPressed==true
                 || keyHandler.leftPressed == true || keyHandler.rightPressed==true) {
-            if(keyHandler.upPressed == true) {
-                direction="up";
-                worldY-=speed;
-            }
+            if(keyHandler.upPressed == true) {direction="up";}
 
             if(keyHandler.downPressed == true) {
                 direction="down";
-                worldY+=speed;
             }
 
             if(keyHandler.rightPressed == true) {
                 direction="right";
-                worldX+=speed;
             }
 
             if(keyHandler.leftPressed == true) {
                 direction="left";
-                worldX-=speed;
             }
 
+            //Check TILE COLLISION
+            collisionOn = false;
+            gp.cChecker.checkTile(this);
 
+            // IF COLLISION IS FALSE, PLAYER CAN MOVE
+            if (collisionOn == false) {
+                switch(direction) {
+                    case "up":
+                        worldY-=speed;
+                        break;
+                    case "down":
+                        worldY+=speed;
+                        break;
+                    case "right":
+                        worldX+=speed;
+                        break;
+                    case "left":
+                        worldX-=speed;
+                        break;
+                }
+            }
             spriteCounter++;
-            if (spriteCounter > 10) {
+            if (spriteCounter > 12) {
                 if (spriteNum == 1) {
                     spriteNum = 2;
                 } else if (spriteNum == 2) {
