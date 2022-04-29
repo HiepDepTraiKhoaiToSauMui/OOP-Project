@@ -33,48 +33,51 @@ public class Player extends Entity{
 
         try {
             up1 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_up_1.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_up_2.png"));
             down1 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_down_1.png"));
             down2 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_down_2.png"));
             right1 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_right_1.png"));
             right2 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_right_2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_2.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_left_1.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_left_2.png"));
         } catch(IOException e) {
             e.printStackTrace();
         }
     }
 
     public void update() {
-        if(keyHandler.upPressed == true) {
-            direction="up";
-            worldY-=speed;
-        }
-
-        if(keyHandler.downPressed == true) {
-            direction="down";
-            worldY+=speed;
-        }
-
-        if(keyHandler.rightPressed == true) {
-            direction="right";
-            worldX+=speed;
-        }
-
-        if(keyHandler.leftPressed == true) {
-            direction="left";
-            worldX-=speed;
-        }
-
-
-        spriteCounter++;
-        if (spriteCounter > 10) {
-            if (spriteNum == 1) {
-                spriteNum = 2;
-            } else if (spriteNum == 2) {
-                spriteNum = 1;
+        if (keyHandler.upPressed==true || keyHandler.downPressed==true
+                || keyHandler.leftPressed == true || keyHandler.rightPressed==true) {
+            if(keyHandler.upPressed == true) {
+                direction="up";
+                worldY-=speed;
             }
-            spriteCounter = 0;
+
+            if(keyHandler.downPressed == true) {
+                direction="down";
+                worldY+=speed;
+            }
+
+            if(keyHandler.rightPressed == true) {
+                direction="right";
+                worldX+=speed;
+            }
+
+            if(keyHandler.leftPressed == true) {
+                direction="left";
+                worldX-=speed;
+            }
+
+
+            spriteCounter++;
+            if (spriteCounter > 10) {
+                if (spriteNum == 1) {
+                    spriteNum = 2;
+                } else if (spriteNum == 2) {
+                    spriteNum = 1;
+                }
+                spriteCounter = 0;
+            }
         }
     }
     public void draw(Graphics2D g2) {
