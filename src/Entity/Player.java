@@ -46,7 +46,6 @@ public class Player extends Entity{
     }
 
     public void update() {
-<<<<<<< HEAD
         if(keyHandler.upPressed == true) {
             direction="up";
             worldY-=speed;
@@ -66,43 +65,18 @@ public class Player extends Entity{
             direction="left";
             worldX-=speed;
         }
-=======
-        if (keyHandler.upPressed==true || keyHandler.downPressed==true
-                || keyHandler.leftPressed == true || keyHandler.rightPressed==true) {
 
-            if (keyHandler.upPressed == true) {
-                direction = "up";
-                y -= speed;
-            }
 
-            if (keyHandler.downPressed == true) {
-                direction = "down";
-                y += speed;
+        spriteCounter++;
+        if (spriteCounter > 10) {
+            if (spriteNum == 1) {
+                spriteNum = 2;
+            } else if (spriteNum == 2) {
+                spriteNum = 1;
             }
-
-            if (keyHandler.rightPressed == true) {
-                direction = "right";
-                x += speed;
-            }
->>>>>>> khoavo
-
-            if (keyHandler.leftPressed == true) {
-                direction = "left";
-                x -= speed;
-            }
-
-            spriteCounter++;
-            if (spriteCounter > 10) {
-                if (spriteNum == 1) {
-                    spriteNum = 2;
-                } else if (spriteNum == 2) {
-                    spriteNum = 1;
-                }
-                spriteCounter = 0;
-            }
+            spriteCounter = 0;
         }
     }
-
     public void draw(Graphics2D g2) {
         BufferedImage image = null;
         switch(direction) {
@@ -160,3 +134,6 @@ public class Player extends Entity{
         g2.drawImage(image,x,y,gp.tileSize, gp.tileSize,null,null);
     }
 }
+
+    
+
