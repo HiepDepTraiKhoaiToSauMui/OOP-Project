@@ -114,17 +114,19 @@ public class TilesManager {
                  screenY= gp.screenHeight-(gp.worldWidth-worldY);
              }
 
-             if(worldX+gp.tileSize>gp.player.worldX-gp.player.screenX
+             if(        worldX+gp.tileSize>gp.player.worldX-gp.player.screenX
                      && worldX-gp.tileSize<gp.player.worldX+gp.player.screenX
                      && worldY+gp.tileSize>gp.player.worldY-gp.player.screenY
                      && worldY-gp.tileSize<gp.player.worldY+gp.player.screenY){
-                 g2.drawImage(map[tileNum].image, screenX, screenY, null );
+                 //g2.drawImage(map[tileNum].image, screenX, screenY, null );
+                 g2.drawImage(map[tileNum].image, screenX, screenY,gp.tileSize, gp.tileSize,null);
              }else{
                  if(gp.player.screenX>gp.player.worldX ||
                     gp.player.screenY>gp.player.worldY||
                     rightOffset>gp.worldWidth-gp.player.worldX||
                     bottomOffset>gp.worldHeight-gp.player.worldY){
-                        g2.drawImage(map[tileNum].image, screenX, screenY, null );
+                        //g2.drawImage(map[tileNum].image, screenX, screenY, null );
+                     g2.drawImage(map[tileNum].image, screenX, screenY,gp.tileSize, gp.tileSize,null);
                  }
              }
 
