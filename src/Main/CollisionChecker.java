@@ -3,6 +3,10 @@ package Main;
 import Entity.Entity;
 
 public class CollisionChecker {
+<<<<<<< HEAD
+=======
+
+>>>>>>> e11503682170d8f2941a041c1dddc7743bfcb97e
     GamePanel gp;
 
     public CollisionChecker(GamePanel gp) {
