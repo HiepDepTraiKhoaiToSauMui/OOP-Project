@@ -17,6 +17,7 @@ public class Player extends Entity{
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp=gp;
         this.keyHandler=keyH;
+        solidArea= new Rectangle(8,16,32,32);
         screenX=gp.screenWidth/2-(gp.tileSize/2);
         screenY=gp.screenHeight/2-(gp.tileSize/2);
         setDefaultValues();
@@ -44,41 +45,74 @@ public class Player extends Entity{
             e.printStackTrace();
         }
     }
-
     public void update() {
-        if(keyHandler.upPressed == true) {
-            direction="up";
-            worldY-=speed;
-        }
+        if (keyHandler.upPressed==true || keyHandler.downPressed==true
+                || keyHandler.leftPressed == true || keyHandler.rightPressed==true) {
+            if(keyHandler.upPressed == true) {direction="up";}
 
-        if(keyHandler.downPressed == true) {
-            direction="down";
-            worldY+=speed;
-        }
-
-        if(keyHandler.rightPressed == true) {
-            direction="right";
-            worldX+=speed;
-        }
-
-        if(keyHandler.leftPressed == true) {
-            direction="left";
-            worldX-=speed;
-        }
-
-
-        spriteCounter++;
-        if (spriteCounter > 10) {
-            if (spriteNum == 1) {
-                spriteNum = 2;
-            } else if (spriteNum == 2) {
-                spriteNum = 1;
+            if(keyHandler.downPressed == true) {
+                direction="down";
             }
-            spriteCounter = 0;
+
+            if(keyHandler.rightPressed == true) {
+                direction="right";
+            }
+
+            if(keyHandler.leftPressed == true) {
+                direction="left";
+            }
+
+            //Check TILE COLLISION
+            collisionOn = false;
+            gp.cChecker.checkTile(this);
+
+            // IF COLLISION IS FALSE, PLAYER CAN MOVE
+            if (collisionOn == false) {
+                switch(direction) {
+                    case "up":
+                        worldY-=speed;
+                        break;
+                    case "down":
+                        worldY+=speed;
+                        break;
+                    case "right":
+                        worldX+=speed;
+                        break;
+                    case "left":
+                        worldX-=speed;
+                        break;
+                }
+            }
+            spriteCounter++;
+            if (spriteCounter > 12) {
+                if (spriteNum == 1) {
+                    spriteNum = 2;
+                } else if (spriteNum == 2) {
+                    spriteNum = 1;
+                }
+                spriteCounter = 0;
+            }
         }
     }
+
     public void draw(Graphics2D g2) {
         BufferedImage image = null;
+        int x=screenX;
+        int y=screenY;
+        if(screenX>worldX){
+            x= worldX;
+        }
+        if(screenY>worldY){
+            y=worldY;
+        }
+        int rightOffset=gp.screenWidth-screenX;
+        if(rightOffset>gp.worldWidth-worldX){
+            x= gp.screenWidth-(gp.worldWidth-worldX);
+        }
+        int bottomOffset=gp.screenHeight-screenY;
+        if(bottomOffset>gp.worldHeight-worldY) {
+            y = gp.screenHeight - (gp.worldWidth - worldY);
+        }
         switch(direction) {
             case "up":
                 if (spriteNum==1) {
@@ -114,22 +148,6 @@ public class Player extends Entity{
                     image =left2;
                 }
                 break;
-        }
-        int x=screenX;
-        int y=screenY;
-        if(screenX>worldX){
-            x= worldX;
-        }
-        if(screenY>worldY){
-            y=worldY;
-        }
-        int rightOffset=gp.screenWidth-screenX;
-        if(rightOffset>gp.worldWidth-worldX){
-            x= gp.screenWidth-(gp.worldWidth-worldX);
-        }
-        int bottomOffset=gp.screenHeight-screenY;
-        if(bottomOffset>gp.worldHeight-worldY) {
-            y = gp.screenHeight - (gp.worldWidth - worldY);
         }
         g2.drawImage(image,x,y,gp.tileSize, gp.tileSize,null,null);
     }

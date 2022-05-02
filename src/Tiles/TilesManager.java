@@ -21,6 +21,13 @@ public class TilesManager {
          getTileImage();
         loadMap();
     }
+    public Tile[] getMap() {
+        return map;
+    }
+    public int[][] getMapTileNum() {
+        return mapTileNum;
+    }
+
     public void getTileImage(){
         try{
             map[0]= new Tile();
@@ -31,6 +38,7 @@ public class TilesManager {
             map[2].image= ImageIO.read(getClass().getResourceAsStream("/tiles/outter_path.png"));
             map[3]= new Tile();
             map[3].image= ImageIO.read(getClass().getResourceAsStream("/tiles/blank.png"));
+            map[3].collision=true;
             map[4]= new Tile();
             map[4].image= ImageIO.read(getClass().getResourceAsStream("/tiles/blank2.png"));
             map[5]= new Tile();
@@ -72,7 +80,7 @@ public class TilesManager {
             while(col<gp.maxWorldCol && row<gp.maxWorldRow){
                 String line = br.readLine();
                 while(col< gp.maxWorldCol){
-                    String number[]   = line.split(" ");
+                    String number[]  = line.split(" ");
                     int num =Integer.parseInt(number[col]);
                     mapTileNum[col][row]= num;
                     col++;
