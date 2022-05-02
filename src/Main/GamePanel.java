@@ -2,6 +2,7 @@ package Main;
 
 import Entity.Player;
 import Tiles.TilesManager;
+import object.SuperObject;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,7 +33,11 @@ public class GamePanel extends JPanel implements Runnable{
 
     int FPS = 60;
     TilesManager tilesM = new TilesManager(this);
+    public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this,keyHandler);
+    public SuperObject obj[] = new SuperObject[10];
+
+
 
     //initial position
     int playerX = 100;
@@ -47,6 +52,10 @@ public class GamePanel extends JPanel implements Runnable{
 
         this.addKeyListener(keyHandler);
         this.setFocusable(true);
+    }
+
+    public void setupGame(){
+        aSetter.setObject();
     }
 
     public void startGameThread() {
@@ -83,7 +92,17 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D)g;
+        //tile
         tilesM.draw(g2);
+
+        //object
+        for(int i =0 ; i < obj.length ; i++){
+            if(obj[i] != null){
+                obj[i].draw(g2, this);
+            }
+        }
+
+        //player
         player.draw(g2);
         if(keyHandler.showDebugText==true){
             g2.setFont(new Font("Arial",Font.PLAIN, 20));
