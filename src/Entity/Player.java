@@ -64,7 +64,6 @@ public class Player extends Entity{
                 direction="left";
             }
 
-<<<<<<< HEAD
             if(keyHandler.leftPressed == true) {
                 direction="left";
             }
@@ -73,12 +72,10 @@ public class Player extends Entity{
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
-=======
             //Check TILE COLLISION
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
->>>>>>> develop
             // IF COLLISION IS FALSE, PLAYER CAN MOVE
             if (collisionOn == false) {
                 switch(direction) {

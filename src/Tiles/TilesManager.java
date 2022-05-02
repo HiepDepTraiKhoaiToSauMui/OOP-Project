@@ -29,12 +29,6 @@ public class TilesManager {
          getTileImage();
         loadMap();
     }
-    public Tile[] getMap() {
-        return map;
-    }
-    public int[][] getMapTileNum() {
-        return mapTileNum;
-    }
 
     public void getTileImage(){
         try{
@@ -49,14 +43,9 @@ public class TilesManager {
             map[2].image= ImageIO.read(getClass().getResourceAsStream("/tiles/garden/soil_path.png"));
 
             map[3]= new Tile();
-<<<<<<< HEAD
-            map[3].image= ImageIO.read(getClass().getResourceAsStream("/tiles/blank.png"));
-            map[3].collision=true;
-=======
             map[3].image= ImageIO.read(getClass().getResourceAsStream("/tiles/others/blank.png"));
             map[3].collision=true;
 
->>>>>>> develop
             map[4]= new Tile();
             map[4].image= ImageIO.read(getClass().getResourceAsStream("/tiles/others/blank2.png"));
             map[4].collision=true;
@@ -255,25 +244,12 @@ public class TilesManager {
                      && worldX-gp.tileSize<gp.player.worldX+gp.player.screenX
                      && worldY+gp.tileSize>gp.player.worldY-gp.player.screenY
                      && worldY-gp.tileSize<gp.player.worldY+gp.player.screenY){
-<<<<<<< HEAD
-                 //g2.drawImage(map[tileNum].image, screenX, screenY, null );
-                 g2.drawImage(map[tileNum].image, screenX, screenY,gp.tileSize, gp.tileSize,null);
-             }else{
-                 if(gp.player.screenX>gp.player.worldX ||
-                    gp.player.screenY>gp.player.worldY||
-                    rightOffset>gp.worldWidth-gp.player.worldX||
-                    bottomOffset>gp.worldHeight-gp.player.worldY){
-                        //g2.drawImage(map[tileNum].image, screenX, screenY, null );
-                     g2.drawImage(map[tileNum].image, screenX, screenY,gp.tileSize, gp.tileSize,null);
-                 }
-=======
                  g2.drawImage(map[tileNum].image, screenX, screenY,gp.tileSize, gp.tileSize,null);
              }else if(gp.player.screenX>gp.player.worldX ||
                     gp.player.screenY>gp.player.worldY||
                     rightOffset>gp.worldWidth-gp.player.worldX||
                     bottomOffset>gp.worldHeight-gp.player.worldY){
                     g2.drawImage(map[tileNum].image, screenX, screenY,gp.tileSize, gp.tileSize,null);
->>>>>>> develop
              }
 
              worldCol++;
