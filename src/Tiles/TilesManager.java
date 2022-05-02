@@ -261,7 +261,6 @@ public class TilesManager {
                     worldCol = 0;
                     worldRow++;
                 }
-
             }
         }
     }

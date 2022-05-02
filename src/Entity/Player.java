@@ -63,14 +63,6 @@ public class Player extends Entity{
             if(keyHandler.leftPressed == true) {
                 direction="left";
             }
-
-<<<<<<< HEAD
-            if(keyHandler.leftPressed == true) {
-                direction="left";
-            }
-
-=======
->>>>>>> e11503682170d8f2941a041c1dddc7743bfcb97e
             //Check TILE COLLISION
             collisionOn = false;
             gp.cChecker.checkTile(this);
