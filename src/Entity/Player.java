@@ -20,27 +20,29 @@ public class Player extends Entity{
         solidArea= new Rectangle(8,16,32,32);
         screenX=gp.screenWidth/2-(gp.tileSize/2);
         screenY=gp.screenHeight/2-(gp.tileSize/2);
+        direction = "down";
+
+        solidArea = new Rectangle(8,16,32,32);
+
         setDefaultValues();
         getPlayerImage();
-        direction = "down";
     }
 
     public void setDefaultValues() {
         worldX= 3* gp.tileSize;
-        worldY=29* gp.tileSize;
+        worldY= 29* gp.tileSize;
         speed =4;
     }
     public void getPlayerImage() {
-
         try {
-            up1 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_up_2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_down_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_down_2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_right_1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_right_2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_left_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/detective/detective_left_2.png"));
+            up1 = ImageIO.read(getClass().getResourceAsStream("/character and NPC/detective/detective_up_1.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/character and NPC/detective/detective_up_2.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/character and NPC/detective/detective_down_1.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/character and NPC/detective/detective_down_2.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/character and NPC/detective/detective_right_1.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/character and NPC/detective/detective_right_2.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/character and NPC/detective/detective_left_1.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/character and NPC/detective/detective_left_2.png"));
         } catch(IOException e) {
             e.printStackTrace();
         }
@@ -48,26 +50,21 @@ public class Player extends Entity{
     public void update() {
         if (keyHandler.upPressed==true || keyHandler.downPressed==true
                 || keyHandler.leftPressed == true || keyHandler.rightPressed==true) {
-            if(keyHandler.upPressed == true) {
-                direction="up";
-                worldY-=speed;
-            }
+            if(keyHandler.upPressed == true) {direction="up";}
 
             if(keyHandler.downPressed == true) {
                 direction="down";
-                worldY+=speed;
             }
 
             if(keyHandler.rightPressed == true) {
                 direction="right";
-                worldX+=speed;
             }
 
             if(keyHandler.leftPressed == true) {
                 direction="left";
-                worldX-=speed;
             }
 
+<<<<<<< HEAD
             if(keyHandler.leftPressed == true) {
                 direction="left";
             }
@@ -76,6 +73,12 @@ public class Player extends Entity{
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
+=======
+            //Check TILE COLLISION
+            collisionOn = false;
+            gp.cChecker.checkTile(this);
+
+>>>>>>> develop
             // IF COLLISION IS FALSE, PLAYER CAN MOVE
             if (collisionOn == false) {
                 switch(direction) {

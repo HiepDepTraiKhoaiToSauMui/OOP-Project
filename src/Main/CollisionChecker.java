@@ -3,6 +3,10 @@ package Main;
 import Entity.Entity;
 
 public class CollisionChecker {
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
     GamePanel gp;
 
     public CollisionChecker(GamePanel gp) {
