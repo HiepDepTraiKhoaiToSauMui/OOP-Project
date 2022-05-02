@@ -48,14 +48,24 @@ public class Player extends Entity{
     public void update() {
         if (keyHandler.upPressed==true || keyHandler.downPressed==true
                 || keyHandler.leftPressed == true || keyHandler.rightPressed==true) {
-            if(keyHandler.upPressed == true) {direction="up";}
+            if(keyHandler.upPressed == true) {
+                direction="up";
+                worldY-=speed;
+            }
 
             if(keyHandler.downPressed == true) {
                 direction="down";
+                worldY+=speed;
             }
 
             if(keyHandler.rightPressed == true) {
                 direction="right";
+                worldX+=speed;
+            }
+
+            if(keyHandler.leftPressed == true) {
+                direction="left";
+                worldX-=speed;
             }
 
             if(keyHandler.leftPressed == true) {
