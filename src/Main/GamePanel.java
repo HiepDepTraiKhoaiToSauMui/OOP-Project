@@ -20,7 +20,7 @@ public class GamePanel extends JPanel implements Runnable{
     public final int screenHeight= tileSize * maxScreenRow; //576
 
     //World SETTINGS
-    public final int maxWorldCol=33;
+    public final int maxWorldCol=35;
     public final int maxWorldRow=35;
 
     public final int worldWidth=tileSize*maxWorldCol;
@@ -35,6 +35,8 @@ public class GamePanel extends JPanel implements Runnable{
     TilesManager tilesM = new TilesManager(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this,keyHandler);
+
+    //initialize 10 objects in same time
     public SuperObject obj[] = new SuperObject[10];
 
 
