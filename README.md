@@ -37,5 +37,7 @@ The name of our game is IU Detective which somewhat demonstrates the main purpos
 #### List of video used: https://www.youtube.com/watch?v=om59cwR7psI&list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq&ab_channel=RyiSnow
 
 ## 5. Task division
+<<<<<<< HEAD
 
 ### TEST thu push vo branch hohiep
+

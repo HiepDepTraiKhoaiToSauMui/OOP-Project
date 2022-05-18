@@ -1,6 +1,8 @@
 package Main;
 
 import Entity.Player;
+import Tiles.TilesManager;
+import object.SuperObject;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,18 +13,33 @@ public class GamePanel extends JPanel implements Runnable{
     final int scale = 3;
 
     public final int tileSize = originalTileSize* scale;
-    final int maxScreenCol =16;
-    final int maxScreenRow=12;
+    public final int maxScreenCol =16;
+    public final int maxScreenRow=12;
 
-    final int screenWidth = tileSize * maxScreenCol; //768
-    final int screenHeight= tileSize * maxScreenRow; //576
+    public final int screenWidth = tileSize * maxScreenCol; //768
+    public final int screenHeight= tileSize * maxScreenRow; //576
+
+    //World SETTINGS
+    public final int maxWorldCol=35;
+    public final int maxWorldRow=35;
+
+    public final int worldWidth=tileSize*maxWorldCol;
+    public final int worldHeight=tileSize*maxWorldRow;
 
     KeyHandler keyHandler = new KeyHandler();
     Thread gameThread;
 
-    int FPS = 60;
+    public CollisionChecker cChecker = new CollisionChecker(this);
 
-    Player player = new Player(this,keyHandler);
+    int FPS = 60;
+    TilesManager tilesM = new TilesManager(this);
+    public AssetSetter aSetter = new AssetSetter(this);
+    public Player player = new Player(this,keyHandler);
+
+    //initialize 10 objects in same time
+    public SuperObject obj[] = new SuperObject[10];
+
+
 
     //initial position
     int playerX = 100;
@@ -37,6 +54,10 @@ public class GamePanel extends JPanel implements Runnable{
 
         this.addKeyListener(keyHandler);
         this.setFocusable(true);
+    }
+
+    public void setupGame(){
+        aSetter.setObject();
     }
 
     public void startGameThread() {
@@ -73,8 +94,25 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D)g;
+        //tile
+        tilesM.draw(g2);
 
+        //object
+        for(int i =0 ; i < obj.length ; i++){
+            if(obj[i] != null){
+                obj[i].draw(g2, this);
+            }
+        }
+
+        //player
         player.draw(g2);
+        if(keyHandler.showDebugText==true){
+            g2.setFont(new Font("Arial",Font.PLAIN, 20));
+            g2.setColor(Color.white);
+            int x= 10; int y=400;
+            int lineHeight= 20;
+
+        }
         g2.dispose();
     }
 }

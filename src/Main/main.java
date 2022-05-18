@@ -18,7 +18,7 @@ public class main {
         //the window will appear at the center of the screen
 
         window.setVisible(true);
-
+        panel.setupGame();
         panel.startGameThread();
     }
 }
